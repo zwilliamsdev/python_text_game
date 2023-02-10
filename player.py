@@ -3,9 +3,22 @@ from loot import lootChest
 
 
 class Player:
-    def __init__(self):
+    def __init__(self, name):
+        self.playerName = name
         self.playerHealth = 100
         self.playerInventory = []
+
+    ###
+    # Player Name
+    ###
+    def getPlayerName(self):
+        return self.playerName
+
+    ###
+    # Player Health
+    ###
+    def getPlayerHealth(self):
+        print(f"You currently have {self.playerHealth} HP.")
 
     def healPlayer(self, amount):
         # Perform heal if not full health
@@ -18,19 +31,19 @@ class Player:
         if self.playerHealth > 100:
             self.playerHealth = 100
 
-        print(f'You have been healed to {self.playerHealth} HP.')
+        print(f'You have been healed for {amount} HP.')
 
     def hurtPlayer(self, amount):
         self.playerHealth -= amount
         if self.playerHealth > 0:
             print(
-                f'You have suffered {amount} damage and now have {self.playerHealth} HP.')
+                f'You have suffered {amount} HP worth of damage.')
         else:
             print('You have died. Please try again.')
 
-    def addInventoryItem(self, item):
-        self.playerInventory.append(item)
-
+    ###
+    # Player Inventory
+    ###
     def getInventoryItems(self):
         itemCount = len(self.playerInventory)
         if itemCount > 0:
@@ -41,6 +54,12 @@ class Player:
         else:
             print('Your pockets are empty.')
 
+    def addInventoryItem(self, item):
+        self.playerInventory.append(item)
+
+    ###
+    # Looting
+    ###
     def loot(self, type, rarity):
         match type:
             case "chest":
