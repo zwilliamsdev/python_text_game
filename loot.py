@@ -1,4 +1,4 @@
-from debug import debug
+from debug import debug, simulate
 from player import addInventoryItem
 import datetime
 import random
@@ -56,5 +56,4 @@ def lootChest(rarity):
 def createLootChest(chest):
     items = len(chest)
     item = chest[random.randint(0, items-1)]
-    debug('looted ' + item["name"])
     addInventoryItem(item)
