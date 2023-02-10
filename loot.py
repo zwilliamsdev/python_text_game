@@ -1,5 +1,4 @@
 from debug import debug, simulate
-from player import Player
 import datetime
 import random
 
@@ -41,19 +40,18 @@ CHEST_EPIC = [
 ]
 
 
-def lootChest(player, rarity):
+def lootChest(rarity):
     match rarity:
         case "common":
-            createLootChest(player, CHEST_COMMON)
+            return createLootChest(CHEST_COMMON)
         case "rare":
-            createLootChest(player, CHEST_RARE)
+            return createLootChest(CHEST_RARE)
         case "epic":
-            createLootChest(player, CHEST_EPIC)
+            return createLootChest(CHEST_EPIC)
         case _:
-            createLootChest(player, CHEST_COMMON)
+            return createLootChest(CHEST_COMMON)
 
 
-def createLootChest(player, chest):
+def createLootChest(chest):
     items = len(chest)
-    item = chest[random.randint(0, items-1)]
-    player.addInventoryItem(item)
+    return chest[random.randint(0, items-1)]

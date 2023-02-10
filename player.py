@@ -1,4 +1,5 @@
 from debug import debug, simulate
+from loot import lootChest
 
 
 class Player:
@@ -39,3 +40,8 @@ class Player:
                 i += 1
         else:
             print('Your pockets are empty.')
+
+    def loot(self, type, rarity):
+        match type:
+            case "chest":
+                self.addInventoryItem(lootChest(rarity))
