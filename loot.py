@@ -5,38 +5,18 @@ import random
 random.seed(datetime.datetime.now())
 
 CHEST_COMMON = [
-    {
-        "name": "hPotion",
-        "description": "Health Potion"
-    },
-    {
-        "name": "gold",
-        "description": "Gold Pieces"
-    }
+    "hPotion",
+    "gold"
 ]
 
 CHEST_RARE = [
-    {
-        "name": "sword",
-        "description": "Sharpened Sword"
-
-    },
-    {
-        "name": "helmet",
-        "description": "Shiny Plate Helmet"
-    }
+    "sword",
+    "helmet"
 ]
 
 CHEST_EPIC = [
-    {
-        "name": "enchanted_necklace",
-        "description": "Magical Necklace",
-    },
-    {
-        "name": "mystic_ring",
-        "description": "Mysterious Ring"
-
-    }
+    "enchanted_necklace",
+    "mystic_ring"
 ]
 
 
