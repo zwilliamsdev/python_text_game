@@ -7,6 +7,9 @@ class Items:
         self.description = description
         self.rarity = rarity
 
+    def __getitems__(self, key):
+        return getattr(self, key)
+
     def getName(self) -> str:
         return self.name
 
@@ -18,8 +21,8 @@ class Items:
 
 
 class Potion(Items):
-    def __init__(self, name: str, description: str, isHealingPotion: bool, potionDamage: int) -> None:
-        super().__init__(name, description)
+    def __init__(self, name: str, description: str, rarity: str, isHealingPotion: bool, potionDamage: int) -> None:
+        super().__init__(name, description, rarity)
         self.isHealingPotion = isHealingPotion
         self.potionDamage = potionDamage
 
@@ -31,8 +34,8 @@ class Potion(Items):
 
 
 class Weapon(Items):
-    def __init__(self, name: str, description: str, damageType: str, minimumDamage: int, maximumDamage: int) -> None:
-        super().__init__(name, description)
+    def __init__(self, name: str, description: str, rarity: str, damageType: str, minimumDamage: int, maximumDamage: int) -> None:
+        super().__init__(name, description, rarity)
         self.damageType = damageType
         self.minimumDamage = minimumDamage
         self.maximumDamage = maximumDamage
