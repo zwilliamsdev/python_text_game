@@ -10,15 +10,6 @@ class Item:
     def __getItem__(self, key):
         return getattr(self, key)
 
-    def getName(self) -> str:
-        return self.name
-
-    def getDescription(self) -> str:
-        return self.description
-
-    def getRarity(self) -> str:
-        return self.rarity
-
 
 class Potion(Item):
     def __init__(self, name: str, description: str, rarity: str, isHealingPotion: bool, potionDamage: int) -> None:
@@ -26,7 +17,7 @@ class Potion(Item):
         self.isHealingPotion = isHealingPotion
         self.potionDamage = potionDamage
 
-    def drinkPotion(self):
+    def drinkPotion(self) -> None:
         if self.isHealingPotion:
             print(f"Healing {self.potionDamage} health")
         else:
@@ -40,7 +31,7 @@ class Weapon(Item):
         self.minimumDamage = minimumDamage
         self.maximumDamage = maximumDamage
 
-    def dealDamage(self):
+    def dealDamage(self) -> None:
         damage = random.randint(self.minimumDamage, self.maximumDamage)
         print(f"Deal damage {damage}")
 
