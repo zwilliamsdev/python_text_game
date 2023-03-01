@@ -1,29 +1,38 @@
 class Items:
     def __init__(self, itemId: str, name: str, description: str) -> None:
-        self.name
-        self.description
+        self.itemId = itemId
+        self.name = name
+        self.description = description
 
-        def getDescription(self):
-            return self.description
+    def getDescription(self):
+        return self.description
 
 
 class Potion(Items):
     def __init__(self, itemId: str, name: str, description: str, isHealingPotion: bool, potionDamage: int) -> None:
-        super().__init__(name, description)
+        super().__init__(itemId, name, description)
         self.isHealingPotion = isHealingPotion
         self.potionDamage = potionDamage
 
     def drinkPotion(self):
         if self.isHealingPotion:
-            f"Healing {self.potionDamage} health"
+            print(f"Healing {self.potionDamage} health")
         else:
-            f"Damaging {self.potionDamage} health"
+            print(f"Damaging {self.potionDamage} health")
 
 
 minorHealthPotion = Potion("minorHealthPotion", "Minor Health Potion",
-                           "Restores a small amount of health if consuemed.", True, 25)
-minorPoisonPotion = Potion("minorPoisonPotion", "Minor Health Potion",
-                           "Restores a small amount of health if consuemed.", True, 25)
+                           "Restores a small amount of health if consumed.", True, 25)
+minorPoisonPotion = Potion("minorPoisonPotion", "Minor Poison Potion",
+                           "You notice a skull written on the label of the vial.", False, 25)
+
+
+def itemTest():
+    print(minorPoisonPotion.getDescription())
+    print(minorHealthPotion.getDescription())
+    minorPoisonPotion.drinkPotion()
+    minorHealthPotion.drinkPotion()
+
 # loot = {
 #     "hPotion": "Health Potion",
 #     "gold": "Gold Pieces",
