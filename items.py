@@ -1,13 +1,13 @@
 import random
 
 
-class Items:
+class Item:
     def __init__(self, name: str, description: str, rarity: str) -> None:
         self.name = name
         self.description = description
         self.rarity = rarity
 
-    def __getitems__(self, key):
+    def __getItem__(self, key):
         return getattr(self, key)
 
     def getName(self) -> str:
@@ -20,7 +20,7 @@ class Items:
         return self.rarity
 
 
-class Potion(Items):
+class Potion(Item):
     def __init__(self, name: str, description: str, rarity: str, isHealingPotion: bool, potionDamage: int) -> None:
         super().__init__(name, description, rarity)
         self.isHealingPotion = isHealingPotion
@@ -33,7 +33,7 @@ class Potion(Items):
             print(f"Damaging {self.potionDamage} health")
 
 
-class Weapon(Items):
+class Weapon(Item):
     def __init__(self, name: str, description: str, rarity: str, damageType: str, minimumDamage: int, maximumDamage: int) -> None:
         super().__init__(name, description, rarity)
         self.damageType = damageType
@@ -47,14 +47,30 @@ class Weapon(Items):
 
 itemList = {
     ### Weapons ###
-    "woodenClub": Weapon("Wooden Club", "A small club made out of wood.", "common", "crushing", 5, 10),
-    "sharpenedSword": Weapon("Steel Sword", "A recently sharpened sword.", "rare", "slashing", 10, 20),
+    "woodenClub":
+        Weapon("Wooden Club", "A small club made out of wood.",
+               "common", "crushing", 5, 10),
+
+    "sharpenedSword":
+        Weapon("Steel Sword", "A recently sharpened sword.",
+               "rare", "slashing", 10, 20),
+
     ### Potions ###
-    "minorHealthPotion": Potion("Minor Health Potion", "Restores a small amount of health if consumed.", "common", True, 25),
-    "minorPoisonPotion": Potion("Minor Poison Potion", "You notice a skull written on the label of the vial.", "rare", False, 25),
-    ### Items ###
-    "coinPurse": Items("Coin Purse", "Several gold pieces in a leather coin purse.", "common"),
-    "enchantedNecklace": Items("Mystical Necklace", "The necklace seems to be eminating with power.", "epic")
+    "minorHealthPotion":
+        Potion("Minor Health Potion",
+               "Restores a small amount of health if consumed.", "common", True, 25),
+
+    "minorPoisonPotion":
+        Potion("Minor Poison Potion",
+               "You notice a skull written on the label of the vial.", "rare", False, 25),
+
+    ### Item ###
+    "coinPurse":
+        Item("Coin Purse", "Several gold pieces in a leather coin purse.", "common"),
+
+    "enchantedNecklace":
+        Item("Mystical Necklace",
+             "The necklace seems to be eminating with power.", "epic")
 }
 
 # loot = {
