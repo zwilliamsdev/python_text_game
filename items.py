@@ -2,15 +2,19 @@ import random
 
 
 class Items:
-    def __init__(self, name: str, description: str) -> None:
+    def __init__(self, name: str, description: str, rarity: str) -> None:
         self.name = name
         self.description = description
+        self.rarity = rarity
 
     def getName(self) -> str:
         return self.name
 
     def getDescription(self) -> str:
         return self.description
+
+    def getRarity(self) -> str:
+        return self.rarity
 
 
 class Potion(Items):
@@ -38,16 +42,16 @@ class Weapon(Items):
         print(f"Deal damage {damage}")
 
 
-items = {
+itemList = {
     ### Weapons ###
-    "woodenClub": Weapon("Wooden Club", "A small club made out of wood.", "crushing", 5, 10),
-    "sharpenedSword": Weapon("Steel Sword", "A recently sharpened sword.", "slashing", 10, 20),
+    "woodenClub": Weapon("Wooden Club", "A small club made out of wood.", "common", "crushing", 5, 10),
+    "sharpenedSword": Weapon("Steel Sword", "A recently sharpened sword.", "rare", "slashing", 10, 20),
     ### Potions ###
-    "minorHealthPotion": Potion("Minor Health Potion", "Restores a small amount of health if consumed.", True, 25),
-    "minorPoisonPotion": Potion("Minor Poison Potion", "You notice a skull written on the label of the vial.", False, 25),
+    "minorHealthPotion": Potion("Minor Health Potion", "Restores a small amount of health if consumed.", "common", True, 25),
+    "minorPoisonPotion": Potion("Minor Poison Potion", "You notice a skull written on the label of the vial.", "rare", False, 25),
     ### Items ###
-    "coinPurse": Items("Coin Purse", "Several gold pieces in a leather coin purse."),
-    "enchantedNecklace": Items("Mystical Necklace", "The necklace seems to be eminating with power.")
+    "coinPurse": Items("Coin Purse", "Several gold pieces in a leather coin purse.", "common"),
+    "enchantedNecklace": Items("Mystical Necklace", "The necklace seems to be eminating with power.", "epic")
 }
 
 # loot = {
