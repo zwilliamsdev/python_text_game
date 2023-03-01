@@ -1,16 +1,21 @@
+import random
+
+
 class Items:
-    def __init__(self, itemId: str, name: str, description: str) -> None:
-        self.itemId = itemId
+    def __init__(self, name: str, description: str) -> None:
         self.name = name
         self.description = description
 
-    def getDescription(self):
+    def getName(self) -> str:
+        return self.name
+
+    def getDescription(self) -> str:
         return self.description
 
 
 class Potion(Items):
-    def __init__(self, itemId: str, name: str, description: str, isHealingPotion: bool, potionDamage: int) -> None:
-        super().__init__(itemId, name, description)
+    def __init__(self, name: str, description: str, isHealingPotion: bool, potionDamage: int) -> None:
+        super().__init__(name, description)
         self.isHealingPotion = isHealingPotion
         self.potionDamage = potionDamage
 
@@ -21,17 +26,29 @@ class Potion(Items):
             print(f"Damaging {self.potionDamage} health")
 
 
-minorHealthPotion = Potion("minorHealthPotion", "Minor Health Potion",
-                           "Restores a small amount of health if consumed.", True, 25)
-minorPoisonPotion = Potion("minorPoisonPotion", "Minor Poison Potion",
-                           "You notice a skull written on the label of the vial.", False, 25)
+class Weapon(Items):
+    def __init__(self, name: str, description: str, damageType: str, minimumDamage: int, maximumDamage: int) -> None:
+        super().__init__(name, description)
+        self.damageType = damageType
+        self.minimumDamage = minimumDamage
+        self.maximumDamage = maximumDamage
+
+    def dealDamage(self):
+        damage = random.randint(self.minimumDamage, self.maximumDamage)
+        print(f"Deal damage {damage}")
 
 
-def itemTest():
-    print(minorPoisonPotion.getDescription())
-    print(minorHealthPotion.getDescription())
-    minorPoisonPotion.drinkPotion()
-    minorHealthPotion.drinkPotion()
+items = {
+    ### Weapons ###
+    "woodenClub": Weapon("Wooden Club", "A small club made out of wood.", "crushing", 5, 10),
+    "sharpenedSword": Weapon("Steel Sword", "A recently sharpened sword.", "slashing", 10, 20),
+    ### Potions ###
+    "minorHealthPotion": Potion("Minor Health Potion", "Restores a small amount of health if consumed.", True, 25),
+    "minorPoisonPotion": Potion("Minor Poison Potion", "You notice a skull written on the label of the vial.", False, 25),
+    ### Items ###
+    "coinPurse": Items("Coin Purse", "Several gold pieces in a leather coin purse."),
+    "enchantedNecklace": Items("Mystical Necklace", "The necklace seems to be eminating with power.")
+}
 
 # loot = {
 #     "hPotion": "Health Potion",
