@@ -1,6 +1,6 @@
 from debug import debug, simulate
+from items import itemList
 from loot import lootChest
-from items import loot
 
 
 class Player:
@@ -52,7 +52,7 @@ class Player:
         if itemCount > 0:
             i = 0
             while i < itemCount:
-                print(loot[self.playerInventory[i]])
+                print(self.playerInventory[i])
                 i += 1
         else:
             print('Your pockets are empty.')
